@@ -8,6 +8,10 @@ const cheerio = require("cheerio");
 // Initialize Express
 const app = express();
 
+const router = express.Router();
+app.use(express.static(_dirname + "/public"));
+app.use(router);
+
 // Database configuration
 const databaseUrl = "scraper";
 const collections = ["scrapedData"];
@@ -78,6 +82,6 @@ app.get("/scrape", function(req, res) {
 
 // Listen on port 3000
 var PORT = process.env.PORT || 3000;
-// app.listen(3000, function() {
-//   console.log("App running on port 3000!");
-// });
+app.listen(3000, function() {
+  console.log("App running on port 3000!");
+});
